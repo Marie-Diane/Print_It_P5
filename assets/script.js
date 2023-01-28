@@ -38,8 +38,14 @@ function eventArrowBanner (direction) {
 	bulletPoints.childNodes[indexSlide].classList.remove("dot_selected");
 	if(direction === "right"){
 		indexSlide += 1;
+		if(indexSlide > slides.length - 1){
+			indexSlide = 0;
+		}
 	} else{
 		indexSlide -= 1;
+		if(indexSlide < 0){
+			indexSlide = slides.length - 1;
+		}
 	}
 	imgSlide.setAttribute("src", "./assets/images/slideshow/" + slides[indexSlide].image)
 	textSlide.innerHTML = slides[indexSlide].tagLine;
