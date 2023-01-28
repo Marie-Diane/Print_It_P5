@@ -29,7 +29,19 @@ for(let i = 0; i < slides.length; i++){
 	bulletPoints.appendChild(point);
 }
 
-// Ajout des Event Listeners sur les flèches
+const imgSlide = document.getElementById("img-slide");
+const textSlide = document.getElementById("text-slide");
+let indexSlide = 0;
+
+// Fonction pour modifier le slide au clic des flèches
 function eventArrowBanner (direction) {
-	console.log(direction);
+	bulletPoints.childNodes[indexSlide].classList.remove("dot_selected");
+	if(direction === "right"){
+		indexSlide += 1;
+	} else{
+		indexSlide -= 1;
+	}
+	imgSlide.setAttribute("src", "./assets/images/slideshow/" + slides[indexSlide].image)
+	textSlide.innerHTML = slides[indexSlide].tagLine;
+	bulletPoints.childNodes[indexSlide].classList.add("dot_selected");
 }
